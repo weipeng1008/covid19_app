@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:covid19_app/models/summary.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+//import 'package:charts_flutter/flutter.dart' as charts; 
 
 class Home extends StatefulWidget {
   @override
@@ -9,7 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with 
     SingleTickerProviderStateMixin {
-
+    
     TabController _tabController;
 
     void initState() {
@@ -41,6 +43,7 @@ class _HomeState extends State<Home> with
     
     );
   }
+
   Future<Summary> fetchSummary() async {
   final response = await http.get('https://api.covid19api.com/summary');
     if (response.statusCode == 200){
